@@ -15,4 +15,5 @@ export default defineConfig({
     assets: true
    },
    site: 'https://Pithiya-Nilesh.github.io',
+   base: '/AstroLive',
 });
