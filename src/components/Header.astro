@@ -3,7 +3,7 @@ import ThemeIcon from '../components/ThemeIcon.astro'
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { languages } from '../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
-console.log("language" ,lang)
+// console.log("language" ,lang)
 const t = useTranslations(lang);
 ---
 <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6 ">
@@ -36,8 +36,8 @@ const t = useTranslations(lang);
           </li>
         ))} -->
         <li>
-          { lang === 'gu' && <a href={`/AstroLive/en`}>English</a> }
-          { lang == 'en' && <a href={`/AstroLive/gu`}>ગુજરાતી</a> }
+          { lang === 'gu' && <a href={`/AstroLive/en/`}>English</a> }
+          { lang == 'en' && <a href={`/AstroLive/gu/`}>ગુજરાતી</a> }
         </li>
       </ul>
       <!-- <select >
