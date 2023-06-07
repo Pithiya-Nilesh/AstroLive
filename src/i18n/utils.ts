@@ -1,7 +1,8 @@
 import { ui, defaultLang } from './ui';
 
 export function getLangFromUrl(url: URL) {
-  const [, lang] = url.pathname.split('/');
+  const [, lang] = url.pathname.split('/AstroLive/');
+  // console.log("sprit", url.pathname.split('/AstroLive/'))
   if (lang in ui) return lang as keyof typeof ui;
   return defaultLang;
 }
