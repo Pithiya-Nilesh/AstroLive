@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { Image } from 'astro:assets';
+import react from '../assets/images/Difference-Between-ReactJS-And-VueJS-1.jpeg'
+
+import { Picture } from '@astrojs/image/components';
+import image from '../assets/images/Difference-Between-ReactJS-And-VueJS-1.jpeg'
+
+const show = false;
+---
+<Layout title="About Us" keyword='keyword 1 keyword 2 keyword 3', description='this is description of about page'>
+    <main>
+        <div class="flex flex-wrap">
+            <Image src={react} alt="A description of my image." />
+            
+            <Picture src={image} widths={[200, 400, 800]} sizes="(max-width: 800px) 100vw, 800px" formats={['avif', 'jpeg', 'png', 'webp']} alt="The Astro logo" class="ml-10"/>
+        </div>
+        <section class="bg-blue-200 h-64 flex items-center justify-center">
+            <h1 class="text-white text-center text-3xl">
+                <p>SMART & CREATIVE</p>
+                <p><strong> Digital Agency</strong></p>
+            </h1>
+        </section>
+        <section class="container mx-auto">
+            <div class="text-center text-2xl text-blue-800 font-black my-10">Get To Know The Business In Which You Would Love To Work.</div>
+            <p class="leading-7">Through the professional distribution of creative, tailor-made apps, we allow progressive companies to transform, grow, and stay ahead of the competition. Our sleek, data-driven technologies help individuals and companies all over the world work better and produce better results. The ideology behind the success of our organization lies in the core principle of making our client’s dream as our own. By understanding the individual and unique needs of all our clients, and making them a core part of our work process, we make sure that the solutions we design are totally worth their time and money.By abiding to this ideology and following a similar approach with each and everyone of our clients, over the years we have developed a strong relationship with more than 90% of our clients, and till today they continue coming back to us with regular project needs.This ideology has not only made our client retention very high but also made sure that all our clients are always satisfied and happy with the solutions we design.</p>
+            <div class="grid grid-cols-2 mt-3 gap-2 leading-7">
+                <p>Our team offers technical assistance and collaborates with you to work out any weaknesses that might emerge during the development process. We live in a new world where technology is constantly changing, and engineering has a huge effect on industry and how it is handled.</p>
+                <p>Online portals and smartphone applications have become important for a successful company because they provide a path for clients to connect with you and control their products.Creating an ideal moving software product is an essential part of any company process, and the software framework converts it into a well-organized production structure.</p>
+            </div>
+
+        </section>
+        <section class="bg-[#f1f6fb] py-10 my-10">
+
+        </section>
+    </main>
+
+    </main>
+</Layout>

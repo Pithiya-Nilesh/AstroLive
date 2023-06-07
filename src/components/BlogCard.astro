@@ -1,22 +1,30 @@
 ---
+import { Image } from 'astro:assets';
 export interface Props {
 	title: string;
 	body: string;
 	href: string;
+	author: string;
+	image: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, author, image } = Astro.props;
 ---
 
 <li class="link-card m-5">
 	<a href={href}>
-		<h2>
+		<img src={image} />
+		<h2 class="text-2xl mt-3">
 			{title}
-			<span>&rarr;</span>
+			<!-- <span>&rarr;</span> -->
 		</h2>
 		<p>
 			{body}
 		</p>
+		<div class="flex flex-wrap justify-between">
+			<strong>By: {author}</strong>
+			<strong class="hv text-blue-500">Read More <span class="text-2xl">&rarr;</span></strong>
+		</div>
 	</a>
 </li>
 <style>
@@ -30,7 +38,7 @@ const { href, title, body } = Astro.props;
 		border-radius: 0.6rem;
 		background-position: 100%;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 3px 4px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 	}
 
 	.link-card > a {
@@ -43,9 +51,8 @@ const { href, title, body } = Astro.props;
 		background-color: white;
 		opacity: 0.8;
 	}
-	h2 {
+	.hv {
 		margin: 0;
-		font-size: 1.25rem;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	p {
@@ -55,9 +62,11 @@ const { href, title, body } = Astro.props;
 	}
 	.link-card:is(:hover, :focus-within) {
 		background-position: 0;
-		background-image: var(--accent-gradient);
+		/* background-image: var(--accent-gradient);	 */
+		background-color: #3b82f6
 	}
-	.link-card:is(:hover, :focus-within) h2 {
+	.link-card:is(:hover, :focus-within) .hv {
 		color: rgb(var(--accent));
 	}
+
 </style>

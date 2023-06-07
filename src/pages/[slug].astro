@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+export async function getStaticPaths(){
+    const posts = await Astro.glob('../posts/*.md');
+    return posts.map(post => ({
+        params: {
+            slug: post.frontmatter.slug
+        },
+        props:{
+            post
+        }
+    }));
+}
+
+const {Content, frontmatter} = Astro.props.post;
+---
+
+<Layout title={frontmatter.title}>
+    <section>
+        <div class="container mx-auto mt-10">
+            <h2 class="text-xl font-bold">{frontmatter.title}</h2>
+            <p class="text-lg mb-5">By: {frontmatter.author} on {new Date(frontmatter.date).toLocaleDateString()}</p>
+            <Content/>
+        </div>
+    </section>
+</Layout>
+
+<!-- ---
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('blog')
+
+  const paths = pages.map(page => {
+    const [lang, ...slug] = page.slug.split('/');
+    return { params: { lang, slug: slug.join('/') || undefined }, props: page }
+  })
+
+  return paths;
+}
+
+const { lang, slug } = Astro.params;
+const page = Astro.props;
+const formattedDate = page.data.date.toLocaleString(lang);
+
+const { Content } = await page.render();
+---
+<h1>{page.data.title}</h1>
+<p>by {page.data.author} • {formattedDate}</p>
+<Content/> -->
+
+
