@@ -2,13 +2,15 @@ import { ui, defaultLang } from './ui';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/AstroLive/');
-  // console.log("sprit", url.pathname.split('/AstroLive/'))
-  if (lang in ui) return lang as keyof typeof ui;
+  const lang1 = lang.slice(0, -1);
+  console.log(lang1);
+
+  if (lang1 in ui) return lang1 as keyof typeof ui;
   return defaultLang;
 }
 
-export function useTranslations(lang: keyof typeof ui) {
+export function useTranslations(lang1: keyof typeof ui) {
   return function t(key: keyof typeof ui[typeof defaultLang]) {
-    return ui[lang][key] || ui[defaultLang][key];
+    return ui[lang1][key] || ui[defaultLang][key];
   }
 }
